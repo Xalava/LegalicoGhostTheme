@@ -36,6 +36,32 @@ into the {body} of the default.hbs template --}}
                 <div class="post-content">
                     {{content}}
                 </div>
+                {{#has tag="#country"}}
+                  {{#if primary_tag}}
+                    {{#get "posts" filter="tags:{{primary_tag.slug}}" include="tags"}}
+                      {{#if posts}}
+                        <h1>Regulatory Statements & Court Decisions</h1>
+                        {{#foreach posts}}
+                          {{#has tag="#statement,#decision"}}
+                            <div><h2><a href="{{url}}">{{title}}</a></h2> {{content}}</div>
+                          {{/has}}
+                        {{/foreach}}
+                        {{!-- <h1>Court Decisions</h1>
+                        {{#foreach posts}}
+                          {{#has tag="#decision"}}
+                            <div><h2><a href="{{url}}">{{title}}</a></h2> {{content}}</div>
+                          {{/has}}
+                        {{/foreach}} --}}
+                        <h1>Examples of ICOs</h1>
+                        {{#foreach posts}}
+                          {{#has tag="#ico" }}
+                            <div><h2><a href="{{url}}">{{title}}</a></h2> {{content}}</div>
+                          {{/has}}
+                        {{/foreach}}
+                      {{/if}}
+                    {{/get}}
+                  {{/if}}
+                {{/has}}
             </section>
 
             {{!-- Email subscribe form at the bottom of the page --}}
