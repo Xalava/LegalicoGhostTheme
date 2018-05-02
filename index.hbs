@@ -24,13 +24,22 @@ into the {body} of the default.hbs template --}}
     <div class="inner">
 
         <div class="post-feed">
+          {{> "map"}}
             {{#foreach posts}}
-
+              {{#has tag="#country"}}
                 {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                 {{> "post-card"}}
+              {{/has}}  
 
             {{/foreach}}
         </div>
 
     </div>
 </main>
+
+{{#contentFor "scripts"}}
+  <script src="{{asset "js/jvectormap.min.js"}}"></script>
+
+  <script src="{{asset "js/map.js"}}"></script>
+
+{{/contentFor}}
