@@ -315,6 +315,10 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     height: 1.5rem;
 }
 
+.social-link-tg svg {
+  height: 1.5rem;
+}
+
 .social-link-wb svg {
     height: 1.6rem;
 }
@@ -2388,9 +2392,19 @@ svg {
 }
 
 .jvectormap-legend-cnt-v {
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 0;
 }
+
+.btn-map{
+  float: left;
+  color: #EAEAEA;
+  background: linear-gradient(to left, rgba(40,40,40,0.8) , rgba(88, 88, 88,0.9) );
+  width: 15rem;
+  margin-bottom:0.4rem;
+  
+}
+
 
 .jvectormap-legend {
   background: black;
@@ -2441,4 +2455,8 @@ svg {
   vertical-align: middle;
   line-height: 20px;
   padding-left: 3px;
+}
+
+.map-link{
+
 }
