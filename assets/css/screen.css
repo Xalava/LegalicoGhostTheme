@@ -828,11 +828,6 @@ make sure this only happens on large viewports / desktop-ish devices.
     margin: 0;
 }
 
-.post-template .kg-card-markdown > p:first-child {
-    font-size: 1.1em;
-    line-height: 1.5em;
-}
-
 .post-full-content a {
     color: #000;
     word-break: break-word;
@@ -1855,7 +1850,7 @@ Usage (In Ghost editor):
 }
 
 .post-template .post-content > p:first-child {
-    font-size: 1.15em;
+    font-size: 1.1em;
     line-height: 1.5em;
 }
 
