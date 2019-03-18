@@ -56,10 +56,10 @@ $(function(){
   jQuery.fn.vectorMap('addMap', 'world_mill',wmap);
   
   var contentData =  {
-    "AE": 1,
-    "AU": 1,
+    "AE": 2,
+    "AU": 2,
     "BZ": 0,
-    "CA": 0,
+    "CA": 2,
     "CH": 2,
     "CN": 2,
     "CY": 0,
@@ -78,7 +78,7 @@ $(function(){
     "KN": 0,
     "KR": 0,
     "KY": 0,
-    "MT": 0,
+    "MT": 2,
     "MY": 1,
     "NL": 0,
     "NZ": 1,
@@ -92,8 +92,9 @@ $(function(){
     "SK": 0,
     "TH": 0,
     "UA": 0,
-    "US": 1,
-    "VT": 0
+    "US": 2,
+    "VT": 0,
+    "AI": 2,
   }
   var volumeData2018registration =     {
     "AE": 0,
@@ -216,6 +217,46 @@ $(function(){
     "AE": 6
   }
 
+  var ratioData =  {
+    "AE": 0,
+    "AU": 10,
+    "BZ": 16,
+    "CA": 2,
+    "CH": 12,
+    "CN": 3,
+    "CY": 18,
+    "DE": 0,
+    "EE": 12,
+    "EU": 0,
+    "FR": 0,
+    "GB": 11,
+    "GI": 12,
+    "HK": 12,
+    "IL": 0,
+    "IM": 15,
+    "IN": 7,
+    "IT": 0,
+    "JP": 9,
+    "KN": 15,
+    "KR": 0,
+    "KY": 20,
+    "MT": 17,
+    "MY": 0,
+    "NL": 14,
+    "NZ": 0,
+    "PL": 0,
+    "PT": 8,
+    "RO": 0,
+    "RU": 13,
+    "SC": 16,
+    "SG": 13,
+    "SI": 0,
+    "SK": 15,
+    "TH": 15,
+    "UA": 0,
+    "US": 2,
+    "VT": 19
+  }
   var markers = [
     // {latLng: [41.90, 12.45], name: 'Vatican City'},
     // {latLng: [43.73, 7.41], name: 'Monaco'},
@@ -236,6 +277,7 @@ $(function(){
     // {latLng: [7.35, 134.46], name: 'Palau'},
     // {latLng: [42.5, 1.51], name: 'Andorra'},
     // {latLng: [14.01, -60.98], name: 'Saint Lucia'},
+    {latLng: [18.22, -63.06], name: 'Anguilla',code:'AI'},
     // {latLng: [6.91, 158.18], name: 'Federated States of Micronesia'},
     {latLng: [22.7, 114.18], name: 'Hong Kong',code:'HK'},
     {latLng: [1.3, 103.8], name: 'Singapore',code:'SG'},
@@ -378,14 +420,16 @@ $(function(){
   var contentPalette = ['#FFF','#303030','#000000'];
   var volumePalette =   ['#FFF','#efc550','#f0b949','#f0ac41','#ef9f3a','#ef9132','#ee842b','#ec7724','#eb681d','#e95815','#e6460e','#e42f06','#e10000'];
   var attitudePalette = ['#FF4136','#FF4136','#F96835','#F48E34','#EFB233','#D6E532','#ADE031','#86DB30','#61D62F','#2ECC40'];
-
+  var ratioPalette = ['#cf0000','#d9361d','#e25235','#eb6a4d','#f28065','#f7967d','#fcab96','#ffc0af','#ffd5c9','#ffeae4','#ffffff','#e9f2e6','#d4e6cd','#bed9b4','#a9cc9c','#93bf85','#7db36d','#66a656','#4e993f','#338d25','#008000']
 
   map.addMarkers(markers, []);
   // map.series.regions[0].setValues(regionColors(contentData,contentPalette));  
   // map.series.markers[0].setValues(markersColors(contentData,contentPalette));
 
   //add buttons
-  var $button = $('<button id="content" class="btn-map">Legalico content</button><br><button id="volumeRegistration" class="btn-map">ICO volume by registration</button><br><button id="volumeOrigin" class="btn-map">ICO volume by team origin</button>');
+  var $button = $('<button id="content" class="btn-map">Legalico content</button><br><button id="ratio" class="btn-map">Teams origin/ICO volume in 2018</button><br>');
+
+  // <button id="volumeRegistration" class="btn-map">ICO volume by registration</button><br><button id="volumeOrigin" class="btn-map">ICO volume by team origin</button>'
   // var $legend = $('<button id="content" class="btn-map">Legalico content</button><br><button id="volume" class="btn-map">2018 ICO volume</button>');
   // $legend.appendTo($(".jvectormap-legend-cnt-v"));
 
@@ -401,35 +445,45 @@ $(function(){
     map.series.markers[0].setValues(markersColors(contentData,contentPalette));
 
     $('#content').addClass("selectedDisplay")
-    $('#volumeOrigin').removeClass("selectedDisplay")
-    $('#volumeRegistration').removeClass("selectedDisplay")
+    $('#ratio').removeClass("selectedDisplay")
+    // $('#volumeOrigin').removeClass("selectedDisplay")
+    // $('#volumeRegistration').removeClass("selectedDisplay")
   });
 
 
-  $("#volumeOrigin").click(function(e) {
+  // $("#volumeOrigin").click(function(e) {
+  //   e.preventDefault();
+  //   map.series.regions[0].setValues(regionColors(volumeData2018origin,volumePalette)); 
+  //   // map.series.markers[0].clear();
+  //   // map.series.markers[0]= new jvm.DataSeries({
+  //   //   values:markersColors(volumeData2018origin,volumePalette)
+  //   // })
+  //   // map.series.markers[0].
+  //   map.series.markers[0].setValues(markersColors(volumeData2018origin,volumePalette));
+  //   $('#content').removeClass("selectedDisplay")
+  //   $('#volumeOrigin').addClass("selectedDisplay")
+  //   $('#volumeRegistration').removeClass("selectedDisplay")
+
+
+  // });
+
+  // $("#volumeRegistration").click(function(e) {
+  //   e.preventDefault();
+  //   map.series.regions[0].setValues(regionColors(volumeData2018registration,volumePalette));  
+  //   map.series.markers[0].setValues(markersColors(volumeData2018registration,volumePalette));
+
+  //   $('#content').removeClass("selectedDisplay")
+  //   $('#volumeOrigin').removeClass("selectedDisplay")
+  //   $('#volumeRegistration').addClass("selectedDisplay")
+  // });
+
+  $("#ratio").click(function(e) {
     e.preventDefault();
-    map.series.regions[0].setValues(regionColors(volumeData2018origin,volumePalette)); 
-    // map.series.markers[0].clear();
-    // map.series.markers[0]= new jvm.DataSeries({
-    //   values:markersColors(volumeData2018origin,volumePalette)
-    // })
-    // map.series.markers[0].
-    map.series.markers[0].setValues(markersColors(volumeData2018origin,volumePalette));
-    $('#content').removeClass("selectedDisplay")
-    $('#volumeOrigin').addClass("selectedDisplay")
-    $('#volumeRegistration').removeClass("selectedDisplay")
-
-
-  });
-
-  $("#volumeRegistration").click(function(e) {
-    e.preventDefault();
-    map.series.regions[0].setValues(regionColors(volumeData2018registration,volumePalette));  
-    map.series.markers[0].setValues(markersColors(volumeData2018registration,volumePalette));
+    map.series.regions[0].setValues(regionColors(ratioData,ratioPalette));  
+    map.series.markers[0].setValues(markersColors(ratioData,ratioPalette));
 
     $('#content').removeClass("selectedDisplay")
-    $('#volumeOrigin').removeClass("selectedDisplay")
-    $('#volumeRegistration').addClass("selectedDisplay")
+    $('#ratio').addClass("selectedDisplay")
   });
 
 
@@ -438,6 +492,6 @@ $(function(){
   //   map.series.regions[0].setValues(regionColors(attitudeData,attitudePalette));  
   //   map.series.markers[0].setValues(markersColors(attitudeData,attitudePalette));
   // });
-  $('#volumeRegistration').click();
+  $('#ratio').click();
 
 })
