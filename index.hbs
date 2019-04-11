@@ -24,6 +24,15 @@ into the {body} of the default.hbs template --}}
 
         <div class="post-feed">
           {{> "map"}}
+          <div class="banner-card post-card-large" >
+            <a class="" href="https://www.eventbrite.com/e/iohk-summit-2019-tickets-55204905358?aff=Legalico20"  style="width:100%;">
+              <picture>
+                <source type="image/webp" srcset="{{asset "iohksummit.webp"}}">
+                <source type="image/jpeg" srcset="{{asset "iohksummit.jpg"}}">
+                <img class="" src="{{asset "iohksummit.jpg"}}" alt="" style="width:100%;">
+            </picture>
+            </a>
+          </div>
             {{#foreach posts}}
               {{#has tag="#country"}}
                 {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
@@ -35,6 +44,16 @@ into the {body} of the default.hbs template --}}
               {{/has}} 
 
             {{/foreach}}
+        </div>
+
+        <div class="banner-card post-card-large" >
+          <a class="" href="http://tokenomics2019.org/"  style="width:100%;">
+            <picture>
+              <source type="image/webp" srcset="{{asset "bannertk.webp"}}">
+              <source type="image/jpeg" srcset="{{asset "bannertk.jpg"}}">
+              <img class="" src="{{asset "bannertk.jpg"}}" alt="" style="width:100%;">
+          </picture>
+          </a>
         </div>
 
     </div>
